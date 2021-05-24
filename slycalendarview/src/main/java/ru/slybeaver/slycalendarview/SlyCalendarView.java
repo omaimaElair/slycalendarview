@@ -111,8 +111,8 @@ public class SlyCalendarView extends FrameLayout implements DateSelectListener {
 
         paintCalendar();
         showTime();
-        ((TextView) findViewById(R.id.txtCancel)).setText(SlyCalendarView.getCancel());
-        ((TextView) findViewById(R.id.txtSave)).setText(SlyCalendarView.getSave());
+        ((TextView) findViewById(R.id.txtCancel)).setText(slyCalendarData.getCancel());
+        ((TextView) findViewById(R.id.txtSave)).setText(slyCalendarData.getSave());
 
         findViewById(R.id.txtCancel).setOnClickListener(new OnClickListener() {
             @Override
