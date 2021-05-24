@@ -134,15 +134,4 @@ public class SlyCalendarDialog extends DialogFragment implements DialogCompleteL
         return this;
     }
 
-
-    public SlyCalendarDialog setCancelText(String text) {
-        ((TextView) findViewById(R.id.txtCancel)).setText(text);
-        return this;
-    }
-
-    public void setSaveText(String text) {
-        ((TextView) findViewById(R.id.txtSave)).setText(text);
-    }
-
-
 }
