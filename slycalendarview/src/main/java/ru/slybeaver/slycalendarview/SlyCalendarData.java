@@ -26,6 +26,8 @@ class SlyCalendarData {
     private Integer selectedColor = null;
     private Integer selectedTextColor = null;
     private Integer timeTheme = null;
+    private String save;
+    private String cancel;
 
     public Date getShowDate() {
         if (showDate == null) {
@@ -36,6 +38,22 @@ class SlyCalendarData {
             }
         }
         return showDate;
+    }
+
+    public String getSave() {
+        return save;
+    }
+
+    public void setSave(String save) {
+        this.save = save;
+    }
+
+    public String getCancel() {
+        return cancel;
+    }
+
+    public void setCancel(String cancel) {
+        this.cancel = cancel;
     }
 
     public void setShowDate(Date showDate) {

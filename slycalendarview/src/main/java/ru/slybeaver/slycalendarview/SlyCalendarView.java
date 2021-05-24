@@ -61,13 +61,6 @@ public class SlyCalendarView extends FrameLayout implements DateSelectListener {
         this.completeListener = completeListener;
     }
 
-    public void setCancelText(String text) {
-        ((TextView) findViewById(R.id.txtCancel)).setText(text);
-    }
-    public void setSaveText(String text) {
-        ((TextView) findViewById(R.id.txtSave)).setText(text);
-    }
-
     public void setSlyCalendarData(SlyCalendarData slyCalendarData) {
         this.slyCalendarData = slyCalendarData;
         init(attrs, defStyleAttr);
@@ -96,6 +89,12 @@ public class SlyCalendarView extends FrameLayout implements DateSelectListener {
         if (slyCalendarData.getSelectedTextColor() == null) {
             slyCalendarData.setSelectedTextColor(typedArray.getColor(R.styleable.SlyCalendarView_selectedTextColor, ContextCompat.getColor(getContext(), R.color.slycalendar_defSelectedTextColor)));
         }
+        if (slyCalendarData.getSave() == null) {
+            slyCalendarData.setSave("Save");
+        }
+        if (slyCalendarData.getCancel() == null) {
+            slyCalendarData.setCancel("Cancel");
+        }
 
         typedArray.recycle();
 
@@ -104,13 +103,16 @@ public class SlyCalendarView extends FrameLayout implements DateSelectListener {
         vpager.setCurrentItem(vpager.getAdapter().getCount() / 2);
 
         showCalendar();
+
+
     }
 
     private void showCalendar() {
 
         paintCalendar();
         showTime();
-
+        ((TextView) findViewById(R.id.txtCancel)).setText(SlyCalendarView.getCancel());
+        ((TextView) findViewById(R.id.txtSave)).setText(SlyCalendarView.getSave());
         findViewById(R.id.txtCancel).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,7 +185,7 @@ public class SlyCalendarView extends FrameLayout implements DateSelectListener {
             @Override
             public void onClick(View v) {
                 ViewPager vpager = findViewById(R.id.content);
-                vpager.setCurrentItem(vpager.getCurrentItem() - 1);
+                vpager.setCurrentItem(vpager.getCurrentItem()-1);
             }
         });
 
@@ -191,7 +193,7 @@ public class SlyCalendarView extends FrameLayout implements DateSelectListener {
             @Override
             public void onClick(View v) {
                 ViewPager vpager = findViewById(R.id.content);
-                vpager.setCurrentItem(vpager.getCurrentItem() + 1);
+                vpager.setCurrentItem(vpager.getCurrentItem()+1);
             }
         });
 
